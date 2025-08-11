@@ -4867,6 +4867,10 @@ void ap_p2p_switch_timer_process (void *FunctionContext)
 #else
 	_adapter *adapter = timer_container_of(adapter, t, wdinfo.ap_p2p_switch_timer);
 #endif
+	struct wifidirect_info *pwdinfo = &adapter->wdinfo;
+#ifdef CONFIG_IOCTL_CFG80211
+	struct rtw_wdev_priv *pwdev_priv = adapter_wdev_data(adapter);
+#endif
 
 	if(rtw_p2p_chk_state(pwdinfo, P2P_STATE_NONE))
 		return;
